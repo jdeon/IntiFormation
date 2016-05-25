@@ -16,17 +16,25 @@
     <!-- ************************************************************************************************ -->
    
    <!-- Premiere methode pour faire l injection dependence -->
-<!-- 	<beans:bean id="daoCrepe" class="com.alabonnecrepe.myapp.dao.ImplDaoCrepe"></beans:bean>
-		<beans:bean id="metierCrepe" class="com.alabonnecrepe.myapp.metier.ImplMetierCrepe">
-			<beans:property name="daoCre" ref="daoCrepe"></beans:property>
+	<beans:bean id="daoEtudiant" class="com.inti05.formation.dao.EtudiantDaoImpl"></beans:bean>
+		<beans:bean id="metierEtudiant" class="com.inti05.formation.metier.EtudiantMetierImpl">
+			<beans:property name="daoEt" ref="daoEtudiant"></beans:property>
 		</beans:bean>
- -->
+	<beans:bean id="daoExamen" class="com.inti05.formation.dao.ExamenDaoImpl"></beans:bean>
+		<beans:bean id="metierExamen" class="com.inti05.formation.metier.ExamenMetierImpl">
+			<beans:property name="daoEx" ref="daoExamen"></beans:property>
+		</beans:bean>
+			<beans:bean id="daoMateriel" class="com.inti05.formation.dao.MaterielDaoImpl"></beans:bean>
+		<beans:bean id="metierMateriel" class="com.inti05.formation.metier.MaterielMetierImpl">
+			<beans:property name="daoM" ref="daoMateriel"></beans:property>
+		</beans:bean>
 	
 	 <!-- Premiere methode pour faire l injection dependence -->	
-	<!-- <context:component-scan base-package="com.alabonnecrepe.myapp.dao"/>
-	<context:component-scan base-package="com.alabonnecrepe.myapp.metier"/>
-	<context:component-scan base-package="com.alabonnecrepe.myapp.entities"/>
-	<context:component-scan base-package="com.alabonnecrepe.myapp.bean"/> -->
+	 <context:component-scan base-package="com.inti05.formation"/>
+	 <context:component-scan base-package="com.inti05.formation.entities"/>
+	<context:component-scan base-package="com.inti05.formation.dao"/>
+	<context:component-scan base-package="com.inti05.formation.metier"/>
+
    
 	<!-- ************************************************************************************************ -->
     <!-- ************************************************************************************************ -->
