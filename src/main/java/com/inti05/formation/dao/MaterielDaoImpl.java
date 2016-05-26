@@ -33,8 +33,8 @@ public class MaterielDaoImpl implements InterMaterielDao {
 	}
 
 	@Override
-	public Materiel modM(Long id) {
-		Materiel m = em.find(Materiel.class, id);
+	public Materiel modM(Materiel m) {
+		
 		em.merge(m);
 		log.info("le materiel" + m.getIdMateriel() + "a bien été modifier");
 		return m;

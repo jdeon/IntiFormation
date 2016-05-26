@@ -28,6 +28,18 @@
 		<beans:bean id="metierMateriel" class="com.inti05.formation.metier.MaterielMetierImpl">
 			<beans:property name="daoM" ref="daoMateriel"></beans:property>
 		</beans:bean>
+			<beans:bean id="daoModule" class="com.inti05.formation.dao.ImplDaoSalle"></beans:bean>
+		<beans:bean id="metierModule" class="com.inti05.formation.metier.ImplMetierModule">
+			<beans:property name="daoModule" ref="daoModule"></beans:property>
+		</beans:bean>
+	<beans:bean id="daoSalle" class="com.inti05.formation.dao.ImplDaoSalle"></beans:bean>
+		<beans:bean id="metierSalle" class="com.inti05.formation.metier.ImplMetierSalle">
+			<beans:property name="daoSalle" ref="daoSalle"></beans:property>
+		</beans:bean>
+	<beans:bean id="daoSession" class="com.inti05.formation.dao.ImplDaoSession"></beans:bean>
+		<beans:bean id="metierSession" class="com.inti05.formation.metier.ImplMetierSession">
+			<beans:property name="daoSession" ref="daoSession"></beans:property>
+		</beans:bean>
 	
 	 <!-- Premiere methode pour faire l injection dependence -->	
 	 <context:component-scan base-package="com.inti05.formation"/>

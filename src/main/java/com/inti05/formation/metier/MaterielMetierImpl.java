@@ -33,9 +33,9 @@ public class MaterielMetierImpl implements InterMaterielMetier {
 	}
 
 	@Override
-	public Materiel modM(Long id) {
+	public Materiel modM(Materiel m) {
 		// TODO Auto-generated method stub
-		return daoM.modM(id);
+		return daoM.modM(m);
 	}
 
 	@Override

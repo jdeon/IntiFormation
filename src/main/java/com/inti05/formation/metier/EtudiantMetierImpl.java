@@ -41,9 +41,9 @@ public class EtudiantMetierImpl implements InterEtudiantMetier {
 	}
 
 	@Override
-	public Etudiant modifEtudiant(Long id) {
+	public Etudiant modifEtudiant(Etudiant e) {
 		// TODO Auto-generated method stub
-		return daoEt.modifEtudiant(id);
+		return daoEt.modifEtudiant(e);
 	}
 
 	@Override

@@ -1,6 +1,17 @@
 package com.inti05.formation.entities;
 
 import java.io.Serializable;
+/**
+ *  @author Shéhérazade
+ *  Nom projet : Inti05
+ *  Date : 25/05/2016
+ *  Package : com.inti05.formation.entities
+ *  Class : Materiel
+ *  Version : 1
+ *  Ref-UML : 1
+ *  Sprint : 1
+ *  ref-UserStory : 
+ */
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

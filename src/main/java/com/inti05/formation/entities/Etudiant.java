@@ -1,6 +1,18 @@
 package com.inti05.formation.entities;
 
 import java.io.Serializable;
+/**
+ *  @author Shéhérazade
+ *  Nom projet : Inti05 
+ *  Date : 25/05/2016
+ *  Package : com.inti05.formation.entities
+ *  Class : Etudiant
+ *  Version : 1
+ *  Ref-UML : 1
+ *  Sprint : 1
+ *  ref-UserStory : 
+ *  Association : (OneToMany) Materiel, (ManyToOne)session ,(OneToMany) examen
+ */
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +53,7 @@ public class Etudiant implements Serializable {
 	@OneToMany
 	@JoinColumn(name = "id_materiel")
 	
-	private Materiel materiel;
+	private List<Materiel> listmateriel = new ArrayList<Materiel>();
 
 	@ManyToOne
 	@JoinColumn(name = "id_Session")
@@ -126,20 +138,22 @@ public class Etudiant implements Serializable {
 	public void setSpecialitéEtu(String specialitéEtu) {
 		this.specialitéEtu = specialitéEtu;
 	}
-
-	public Materiel getMateriel() {
-		return materiel;
+	public List<Materiel> getListmateriel() {
+		return listmateriel;
 	}
 
-	public void setMateriel(Materiel materiel) {
-		this.materiel = materiel;
+	public void setListmateriel(List<Materiel> listmateriel) {
+		this.listmateriel = listmateriel;
 	}
+
 
 	
 	/////////////////////////////////////////////
 	//////////////////Constructors///////////////
 	/////////////////////////////////////////////
 	
+
+
 	public Etudiant() {
 		super();
 		// TODO Auto-generated constructor stub

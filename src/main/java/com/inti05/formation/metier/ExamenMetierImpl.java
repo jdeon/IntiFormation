@@ -40,9 +40,9 @@ public class ExamenMetierImpl implements InterExamMetier {
 	}
 
 	@Override
-	public Examen modifExam(Long id) {
+	public Examen modifExam(Examen ex) {
 		// TODO Auto-generated method stub
-		return daoEx.modifExam(id);
+		return daoEx.modifExam(ex);
 	}
 
 	@Override

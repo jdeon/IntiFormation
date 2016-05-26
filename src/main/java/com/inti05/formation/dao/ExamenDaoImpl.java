@@ -41,8 +41,8 @@ public class ExamenDaoImpl implements InterExamenDao {
 	}
 
 	@Override
-	public Examen modifExam(Long id) {
-		Examen ex = em.find(Examen.class, id);
+	public Examen modifExam(Examen ex) {
+	
 		em.merge(ex);
 		log.info("L'examen " + ex.getIdExamen() + "a bien été modifier");
 

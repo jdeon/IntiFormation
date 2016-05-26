@@ -38,17 +38,10 @@ public class EtudiantDaoImpl implements InterEtudiantDao {
 		return e;
 	}
 
-	@Override
-	public Etudiant modifEtudiant(Long id) {
-		Etudiant e = em.find(Etudiant.class, id);
-		em.merge(e);
-		log.info("l'étudiant " + e.getNomEtu() + "a bien été modifier");
-		return e;
-	}
 
 	@Override
 	public List<Etudiant> getlistParMc(String mc) {
-		Query query = em.createQuery("from Etudiant e where e.nomEtu like :x");
+		Query query = em.createQuery("from Etudiant e where e.nomEtu  like :x  or e.prenomEtu like :x");
 		query.setParameter("x", "%" + mc + "%");
 		log.info("la liste des étudiant par mots clés contient"
 				+ query.getResultList().size());
@@ -68,6 +61,13 @@ public class EtudiantDaoImpl implements InterEtudiantDao {
 	public Etudiant getById(Long id) {
 		Etudiant e = em.find(Etudiant.class, id);
 		log.info("L'étudiant est bien renvoyé" + e.getIdEtudiant());
+		return e;
+	}
+
+	@Override
+	public Etudiant modifEtudiant(Etudiant e) {
+		em.merge(e);
+		log.info("l'étudiant " + e.getNomEtu() + "a bien été modifier");
 		return e;
 	}
 

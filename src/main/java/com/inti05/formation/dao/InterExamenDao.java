@@ -9,7 +9,7 @@ public interface InterExamenDao {
 	public Examen addExamen(Examen ex);
 	public List<Examen> getListExam();
 	public Examen supExam(Long id);
-	public Examen modifExam(Long id);
+	public Examen modifExam(Examen ex);
 	public Examen getbyId(Long id);
 	
 	

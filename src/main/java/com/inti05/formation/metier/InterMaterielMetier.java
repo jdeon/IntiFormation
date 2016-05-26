@@ -7,7 +7,7 @@ import com.inti05.formation.entities.Materiel;
 public interface InterMaterielMetier {
 	public Materiel addM(Materiel m);
 	public Materiel supM(Long id);
-	public Materiel modM(Long id);
+	public Materiel modM(Materiel m);
 	public List<Materiel> getList();
 	public Materiel getById(Long id);
 	
