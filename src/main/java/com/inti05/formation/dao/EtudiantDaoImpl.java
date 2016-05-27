@@ -9,6 +9,8 @@ import javax.persistence.Query;
 import org.apache.log4j.Logger;
 
 import com.inti05.formation.entities.Etudiant;
+import com.inti05.formation.entities.Examen;
+import com.inti05.formation.entities.Materiel;
 
 public class EtudiantDaoImpl implements InterEtudiantDao {
 
@@ -68,6 +70,48 @@ public class EtudiantDaoImpl implements InterEtudiantDao {
 	public Etudiant modifEtudiant(Etudiant e) {
 		em.merge(e);
 		log.info("l'étudiant " + e.getNomEtu() + "a bien été modifier");
+		return e;
+	}
+
+	@Override
+	public Etudiant addExamToEtudiant(Long idExam, Long idEtudiant) {
+		Etudiant e= em.find(Etudiant.class, idEtudiant);
+		Examen ex= em.find(Examen.class, idExam);
+		e.getListeExamen().add(ex);
+		ex.setEtudiant(e);
+		em.merge(e);
+		em.merge(ex);
+		return e;
+	}
+
+	@Override
+	public Etudiant supExamToEtudiant(Long idExam, Long idEtudiant) {
+		Etudiant e= em.find(Etudiant.class, idEtudiant);
+		Examen ex= em.find(Examen.class, idExam);
+		e.getListeExamen().remove(ex);
+		ex.setEtudiant(null);
+		em.merge(e);
+		em.merge(ex);
+		return e;
+	}
+
+	@Override
+	public Etudiant addMaterToEtudiant(Long idMateriel, Long idEtudiant) {
+		Etudiant e= em.find(Etudiant.class, idEtudiant);
+		Materiel m = em.find(Materiel.class, idMateriel);
+		e.getListmateriel().add(m);
+		em.merge(e);
+		return e;
+
+	}
+
+	@Override
+	public Etudiant supMaterToEtudiant(Long idMateriel, Long idEtudiant) {
+		
+		Etudiant e= em.find(Etudiant.class, idEtudiant);
+		Materiel m = em.find(Materiel.class, idMateriel);
+		e.getListmateriel().remove(m);
+		em.merge(e);
 		return e;
 	}
 

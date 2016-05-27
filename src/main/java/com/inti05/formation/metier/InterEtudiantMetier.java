@@ -12,6 +12,10 @@ public interface InterEtudiantMetier {
 	public List<Etudiant> getlistParMc(String mc);
 	public List<Etudiant> getListNomExacte(String nom);
 	public Etudiant getById(Long id);
+	public Etudiant addExamToEtudiant(Long idExam, Long idEtudiant);
+	public Etudiant supExamToEtudiant (Long idExam, Long idEtudiant);
+	public Etudiant addMaterToEtudiant ( Long idMateriel, Long idEtudiant);
+	public Etudiant supMaterToEtudiant ( Long idMateriel, Long idEtudiant);
 	
 
 }

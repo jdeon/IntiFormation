@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.inti05.formation.entities.Etudiant;
+import com.inti05.formation.entities.Examen;
 import com.inti05.formation.metier.InterEtudiantMetier;
 
 public class TestEtudiant {
@@ -75,13 +76,27 @@ public class TestEtudiant {
 	public void testGetListNomExacte() {
 				List<Etudiant> list = metier.getListNomExacte("Duroc");
 				assertTrue(list.size()>0);
-}*/
+}
 
 	@Test
 	public void testGetById() {
 		Long id= 2L;
 		Etudiant e = metier.getById(id);
 		assertEquals(id, e.getIdEtudiant());
+		
+	}*/
+	
+	@Test
+	public void addExtoEtu(){
+		Long idEtu=4L;
+		Etudiant e1 = metier.getById(idEtu);
+		List<Examen> exEtu = e1.getListeExamen();
+		
+		Long idEx=2L;
+		Etudiant e=metier.addExamToEtudiant(idEx, idEtu);
+		List<Examen> exEtu2 = e1.getListeExamen();
+		assertTrue(exEtu.size()<exEtu2.size());
+		
 		
 	}
 

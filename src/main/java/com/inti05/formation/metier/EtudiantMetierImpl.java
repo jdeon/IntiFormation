@@ -64,4 +64,28 @@ public class EtudiantMetierImpl implements InterEtudiantMetier {
 		return daoEt.getById(id);
 	}
 
+	@Override
+	public Etudiant addExamToEtudiant(Long idExam, Long idEtudiant) {
+		
+		return daoEt.addExamToEtudiant(idExam, idEtudiant);
+	}
+
+	@Override
+	public Etudiant supExamToEtudiant(Long idExam, Long idEtudiant) {
+		// TODO Auto-generated method stub
+		return daoEt.supExamToEtudiant(idExam, idEtudiant);
+	}
+
+	@Override
+	public Etudiant addMaterToEtudiant(Long idMateriel, Long idEtudiant) {
+		// TODO Auto-generated method stub
+		return daoEt.addMaterToEtudiant(idMateriel, idEtudiant);
+	}
+
+	@Override
+	public Etudiant supMaterToEtudiant(Long idMateriel, Long idEtudiant) {
+		// TODO Auto-generated method stub
+		return daoEt.supMaterToEtudiant(idMateriel, idEtudiant);
+	}
+
 }

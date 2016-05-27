@@ -51,8 +51,7 @@ public class MaterielDaoImpl implements InterMaterielDao {
 	@Override
 	public Materiel getById(Long id) {
 		Materiel m = em.find(Materiel.class, id);
-		log.info("le materiel" + m.getIdMateriel()
-				+ "a bien été trouver par son id");
+		log.info("le materiel" + m.getIdMateriel()+ "a bien été trouver par son id");
 		return m;
 	}
 

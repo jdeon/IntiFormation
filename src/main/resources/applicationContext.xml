@@ -28,7 +28,7 @@
 		<beans:bean id="metierMateriel" class="com.inti05.formation.metier.MaterielMetierImpl">
 			<beans:property name="daoM" ref="daoMateriel"></beans:property>
 		</beans:bean>
-			<beans:bean id="daoModule" class="com.inti05.formation.dao.ImplDaoSalle"></beans:bean>
+			<beans:bean id="daoModule" class="com.inti05.formation.dao.ImplDaoModule"></beans:bean>
 		<beans:bean id="metierModule" class="com.inti05.formation.metier.ImplMetierModule">
 			<beans:property name="daoModule" ref="daoModule"></beans:property>
 		</beans:bean>
