@@ -1,12 +1,199 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-<p>HELLO </p>
+<title>Hello this  is a new application from JD and SHE</title>
+</h:head>
+<h:body>
+<p>HELLO le monde voici les nouvelles applications qui vont révolutionner le monde </p>
 
-</body>
+<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Etudiant" icon="ui-icon-document">
+            <p:submenu label="Ajouter Etudiant" icon="ui-icon-contact">
+                <p:menuitem value="Ajouter" url="etudiant.xhtml" />
+            </p:submenu>
+            <p:menuitem value="Modifier" url="etudiant.xhtml" />
+            <p:separator />
+            <p:menuitem value="Supprimer" url="etudiant.xhtml" />
+            <p:separator />
+            <p:menuitem value="Liste des étudiants" url="etudiant.xhtml" />
+            <p:separator />
+            <p:menuitem value="Quit" url="index.xhtml" />
+        </p:submenu>
+
+			<p:submenu label="Examen" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des Examens" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Materiel" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste du materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+			
+						<p:submenu label="Salle" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des salles" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+			
+									<p:submenu label="Session" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+									<p:submenu label="Module" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des modules" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+			
+			
+			
+
+
+			<p:submenu label="Help" icon="ui-icon-help">
+				<p:menuitem value="Contents" url="#" />
+				<p:submenu label="Search" icon="ui-icon-search">
+					<p:submenu label="Text">
+						<p:menuitem value="Workspace" url="#" />
+					</p:submenu>
+					<p:menuitem value="File" url="#" />
+				</p:submenu>
+			</p:submenu>
+
+
+
+			<p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+ 
+        <f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+        </f:facet>
+    </p:menubar>
+</h:form>
+
+<p:dataTable var="etu" value="#{etudBean.listeEtudiant()}">
+    <p:column headerText="Id">
+        <h:outputText value="#{etu.idEtudiant}" />
+    </p:column>
+ 
+    <p:column headerText="Nom">
+        <h:outputText value="#{etu.nomEtu}" />
+    </p:column>
+
+		<p:column headerText="Prenom">
+			<h:outputText value="#{etu.prenomEtu}" />
+		</p:column>
+
+		<p:column headerText="Date de Naissance">
+			<h:outputText value="#{etu.datedeNaissanceEtu}" />
+		</p:column>
+
+
+		<p:column headerText="Mail">
+        <h:outputText value="#{etu.mail}" />
+    </p:column>
+    
+        <p:column headerText="Telephone">
+        <h:outputText value="#{etu.telephoneEtu}" />
+    </p:column>
+    
+
+         <p:column headerText="Specialité">
+        <h:outputText value="#{etu.specialitéEtu}" />
+    </p:column>
+</p:dataTable><br/>
+
+
+
+<h:form>
+<h:panelGrid style="background-color: rgb(51,204,204)" columns="2" cellpadding="5">
+	Nom: <p:inputText value="#{etudBean.e.nomEtu}"></p:inputText>
+	<br/>
+	Prenom: <p:inputText value="#{etudBean.e.prenomEtu}"></p:inputText>
+	<br/>
+	Date de naissance: <p:calendar value="#{etudBean.e.datedeNaissanceEtu}"></p:calendar>
+	<br/>
+	Mail: <p:inputText value="#{etudBean.e.mail}"></p:inputText>
+	<br/>
+	Telephone: <p:inputText value="#{etudBean.e.telephoneEtu}"></p:inputText>
+	<br/>
+	Specialite: <p:inputText value="#{etudBean.e.specialitéEtu}"></p:inputText>
+	<br/>
+	<p:commandButton value="AJouter" actionListener="#{etudBean.addEtudiant()}"></p:commandButton>
+	</h:panelGrid>
+</h:form>
+
+
+<h:form>
+Id de l'Etudiant : <p:inputText value="#{etudBean.id}"></p:inputText>
+<p:commandButton value="Supprimer" actionListener="#{etudBean.supEtudiant()}"></p:commandButton>
+
+</h:form>
+<h:form>
+
+<h:panelGrid style="background-color: rgb(51,204,204)" columns="2" cellpadding="5">
+	Id: <p:inputText value="#{etudBean.e.idEtudiant}"></p:inputText>
+	<br/>
+	Nom: <p:inputText value="#{etudBean.e.nomEtu}"></p:inputText>
+	<br/>
+	Prenom: <p:inputText value="#{etudBean.e.prenomEtu}"></p:inputText>
+	<br/>
+	Date de naissance: <p:calendar value="#{etudBean.e.datedeNaissanceEtu}"></p:calendar>
+	<br/>
+	Mail: <p:inputText value="#{etudBean.e.mail}"></p:inputText>
+	<br/>
+	Telephone: <p:inputText value="#{etudBean.e.telephoneEtu}"></p:inputText>
+	<br/>
+	Specialite: <p:inputText value="#{etudBean.e.specialitéEtu}"></p:inputText>
+	<br/>
+	<p:commandButton value="Modifier" actionListener="#{etudBean.modifEtudiant()}"></p:commandButton>
+	</h:panelGrid>
+
+</h:form>
+
+
+
+
+</h:body>
 </html>
