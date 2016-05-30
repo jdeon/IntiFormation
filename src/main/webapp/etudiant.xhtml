@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hello this is a new application from JD and SHE</title>
+</h:head>
+<h:body>
+
+	<h:form>
+
+		<p:growl id="growl" sticky="true" showDetail="true" />
+
+		<p:wizard flowListener="#{etudBean.onFlowProcess}">
+			<p:tab id="identite" title="Idendité">
+				<p:panel style="background-color: rgb(255,185,255)"
+					header="Fiche personnel de l'étudiant">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value=" Nom: *" />
+						<p:inputText value="#{etudBean.e.nomEtu}" required="true"
+							label="Nom" />
+
+						<h:outputText value="Prénom: *" />
+						<p:inputText value="#{etudBean.e.prenomEtu}" required="true"
+							label="Prenom" />
+
+						<h:outputText value="Date de Naissance: " />
+						<p:calendar value="#{etudBean.e.datedeNaissanceEtu}" />
+
+						<h:outputText value="Skip to last: " />
+						<h:selectBooleanCheckbox value="#{etudBean.skip}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+
+
+			<p:tab id="contact" title="Contact">
+				<p:panel style="background-color: rgb(255,185,255)"
+					header="Information">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Email: *" />
+						<p:inputText value="#{etudBean.e.mail}" required="true"
+							label="Email" />
+
+						<h:outputText value="Téléphone: " />
+						<p:inputText value="#{etudBean.e.telephoneEtu}" />
+
+
+						<h:outputText value="Skip to last: " />
+						<h:selectBooleanCheckbox value="#{etudBean.skip}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="aprcours" title="Parcours">
+				<p:panel style="background-color: rgb(255,185,255)"
+					header="Information supplémentaire">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Spécialité: *" />
+						<p:inputText value="#{etudBean.e.specialitéEtu}" required="true"
+							label="Specialité" />
+
+
+						<h:outputText value="Skip to last: " />
+						<h:selectBooleanCheckbox value="#{etudBean.skip}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+
+
+			<p:tab id="confirm" title="Confirmation">
+				<p:panel style="background-color: rgb(255,185,255)"
+					header="Confirmation">
+					<h:panelGrid id="confirmation" columns="3"
+						columnClasses="grid,grid,grid">
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Nom: " />
+							<h:outputText value="#{etudBean.e.nomEtu}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Prénom: " />
+							<h:outputText value="#{etudBean.e.prenomEtu}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Date de Naissance: " />
+							<h:outputText value="#{etudBean.e.datedeNaissanceEtu}"
+								styleClass="outputLabel" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Email: " />
+							<h:outputText value="#{etudBean.e.mail}" styleClass="outputLabel" />
+
+							<h:outputText value="Téléphone: " />
+							<h:outputText value="#{etudBean.e.telephoneEtu}"
+								styleClass="outputLabel" />
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Spécialité: " />
+							<h:outputText value="#{etudBean.e.specialitéEtu}"
+								styleClass="outputLabel" />
+
+
+
+							<h:outputText />
+							<h:outputText />
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<p:commandButton value="Ajouter"
+						actionListener="#{etudBean.addEtudiant()}" update="growl"
+						process="@this" />
+				</p:panel>
+			</p:tab>
+		</p:wizard>
+
+		<br />
+
+
+
+
+
+		<h2 style="margin-top: 40">Etudiant</h2>
+		<p:accordionPanel id="accordion" multiple="true"
+			style="margin-bottom:20px;">
+			<p:tab title="Liste des étudiants">
+				<h:panelGrid style="background-color: rgb(134,48,134)" columns="2"
+					cellpadding="10">
+					<p:dataTable var="etu" value="#{etudBean.listeEtudiant()}">
+						<p:column headerText="Id">
+							<h:outputText value="#{etu.idEtudiant}" />
+						</p:column>
+
+						<p:column headerText="Nom">
+							<h:outputText value="#{etu.nomEtu}" />
+						</p:column>
+
+						<p:column headerText="Prenom">
+							<h:outputText value="#{etu.prenomEtu}" />
+						</p:column>
+
+						<p:column headerText="Date de Naissance">
+							<h:outputText value="#{etu.datedeNaissanceEtu}" />
+						</p:column>
+
+
+						<p:column headerText="Mail">
+							<h:outputText value="#{etu.mail}" />
+						</p:column>
+
+						<p:column headerText="Telephone">
+							<h:outputText value="#{etu.telephoneEtu}" />
+						</p:column>
+
+
+						<p:column headerText="Specialité">
+							<h:outputText value="#{etu.specialitéEtu}" />
+						</p:column>
+					</p:dataTable>
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Modifier un étudiant">
+				<h:panelGrid style="background-color: rgb(255,185,255)" columns="2"
+					cellpadding="10">
+					<h:form>
+               Id: <p:inputText value="#{etudBean.e.idEtudiant}"></p:inputText>
+						<br />
+    Nom: <p:inputText value="#{etudBean.e.nomEtu}"></p:inputText>
+						<br />
+    Prenom: <p:inputText value="#{etudBean.e.prenomEtu}"></p:inputText>
+						<br />
+    Date de naissance: <p:calendar
+							value="#{etudBean.e.datedeNaissanceEtu}"></p:calendar>
+						<br />
+    Mail: <p:inputText value="#{etudBean.e.mail}"></p:inputText>
+						<br />
+    Telephone: <p:inputText value="#{etudBean.e.telephoneEtu}"></p:inputText>
+						<br />
+    Specialite: <p:inputText value="#{etudBean.e.specialitéEtu}"></p:inputText>
+						<br />
+						<p:commandButton value="Modifier"
+							actionListener="#{etudBean.modifEtudiant()}" icon="ui-icon-check"></p:commandButton>
+
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+
+
+		</p:accordionPanel>
+
+		<p:commandButton id="pnlBtn" value="Block Panel" type="button"
+			onclick="PF('bui').show()" />
+		<p:commandButton id="pnlBtn2" value="Unblock Panel" type="button"
+			onclick="PF('bui').hide()" />
+
+		<p:blockUI block="accordion" widgetVar="bui" />
+		<br />
+		<br />
+		<p:accordionPanel>
+			<p:tab title="Supprimer un étudiant">
+				<h:panelGrid style="background-color: rgb(255,185,255)" columns="2"
+					cellpadding="10">
+					<h:form>
+Id de l'Etudiant : <p:inputText value="#{etudBean.id}"></p:inputText>
+						<p:commandButton value="Supprimer"
+							actionListener="#{etudBean.supEtudiant()}" icon="ui-icon-check"></p:commandButton>
+
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+		</p:accordionPanel>
+
+<h:form id="form">
+			<p:growl id="msgs" showDetail="true" />
+
+			<h3 style="margin-top: 0">Recherche par mots clés</h3>
+			<p:accordionPanel>
+				<p:tab title="Recherche par id">
+					<h:panelGrid style="background-color: rgb(255,185,255)" columns="2" cellpadding="10">
+						<h:form>
+        Id de l'Etudiant : <p:inputText value="#{etudBean.id}"></p:inputText>
+							<p:commandButton value="Entrer un identifiant"
+								actionListener="#{etudBean.getById()}" icon="ui-icon-check"></p:commandButton>
+												<p:tab>
+							<h:outputText value="Identifiant"></h:outputText>
+							<h:outputText value="Nom"></h:outputText>
+							<h:outputText value="Prenom"></h:outputText>
+							<h:outputText value="Date de Naissance"></h:outputText>
+							<h:outputText value="Mail"></h:outputText>
+							<h:outputText value="Telephone"></h:outputText>
+							<h:outputText value="Specialite"></h:outputText>
+
+							<h:outputText value="#{etudBean.e.idEtudiant}" />
+							<h:outputText value="#{etudBean.e.nomEtu}" />
+							<h:outputText value="#{etudBean.e.prenomEtu}" />
+							<h:outputText value="#{etudBean.e.datedeNaissanceEtu}" />
+							<h:outputText value="#{etudBean.e.telephoneEtu}" />
+							<h:outputText value="#{etudBean.e.mail}" />
+							<h:outputText value="#{etudBean.e.specialitéEtu}" />
+
+						</p:tab>
+						</h:form>
+		
+
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Recherche par Nom Exacte">
+					<h:panelGrid style="background-color: rgb(255,185,255)" columns="2" cellpadding="10">
+						
+											<h:form>
+    
+    Nom : <p:inputText value="#{etudBean.nomEtu}"></p:inputText>
+							<p:commandButton value="Trouver"
+								actionListener="#{etudBean.getListNomExacte()}"
+								icon="ui-icon-check">
+							</p:commandButton>
+							<p:dataTable style="background-color: rgb(134,48,134)" var="get"
+								value="#{etudBean.getListNomExacte()}">
+								<p:column headerText="Id">
+									<h:outputText value="#{get.idEtudiant}" />
+								</p:column>
+
+								<p:column headerText="Nom">
+									<h:outputText value="#{get.nomEtu}" />
+								</p:column>
+
+								<p:column headerText="Prenom">
+									<h:outputText value="#{get.prenomEtu}" />
+								</p:column>
+
+								<p:column headerText="Date de Naissance">
+									<h:outputText value="#{get.datedeNaissanceEtu}" />
+								</p:column>
+
+
+								<p:column headerText="Mail">
+									<h:outputText value="#{get.mail}" />
+								</p:column>
+
+								<p:column headerText="Telephone">
+									<h:outputText value="#{get.telephoneEtu}" />
+								</p:column>
+
+
+								<p:column headerText="Specialité">
+									<h:outputText value="#{get.specialitéEtu}" />
+								</p:column>
+							</p:dataTable>
+
+
+
+
+						</h:form>
+						
+						
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Godfather Part III">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage name="demo/images/godfather/godfather3.jpg" />
+						<h:outputText value="After a break of more than 15 years..." />
+					</h:panelGrid>
+				</p:tab>
+			</p:accordionPanel>
+		</h:form>
+
+
+	</h:form>
+
+</h:body>
+</html>
