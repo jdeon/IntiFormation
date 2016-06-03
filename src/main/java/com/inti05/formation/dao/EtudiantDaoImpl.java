@@ -51,12 +51,14 @@ public class EtudiantDaoImpl implements InterEtudiantDao {
 	}
 
 	@Override
-	public List<Etudiant> getListNomExacte(String nom) {
-		Query query = em.createQuery("from Etudiant e where e.nomEtu like :x");
+	public Etudiant getListNomExacte(String nom,String prenom) {
+		Query query = em.createQuery("from Etudiant e where e.nomEtu like :x and e.prenomEtu like :y");
 		query.setParameter("x", nom);
+		query.setParameter("y", prenom);
 		log.info("la liste par nom exacte contient "
 				+ query.getResultList().size());
-		return query.getResultList();
+		Etudiant e = (Etudiant) query.getResultList().get(0);
+		return e;
 	}
 
 	@Override
@@ -113,6 +115,12 @@ public class EtudiantDaoImpl implements InterEtudiantDao {
 		e.getListmateriel().remove(m);
 		em.merge(e);
 		return e;
+	}
+	
+	@Override
+	public List<Etudiant> listEtudiantSansFormation() {
+		Query req = em.createQuery("SELECT e FROM Etudiant e WHERE e.session IS NULL");
+		return req.getResultList();
 	}
 
 }

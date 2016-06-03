@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hello this is a new application from JD and SHE</title>
+</h:head>
+<h:body>
+
+
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:submenu label="Etudiant" icon="ui-icon-document">
+				<p:submenu label="Ajouter Etudiant" icon="ui-icon-contact">
+					<p:menuitem value="Ajouter" url="etudiant.xhtml" />
+				</p:submenu>
+				<p:menuitem value="Modifier" url="etudiant.xhtml" />
+				<p:separator />
+				<p:menuitem value="Supprimer" url="etudiant.xhtml" />
+				<p:separator />
+				<p:menuitem value="Liste des étudiants" url="etudiant.xhtml" />
+				<p:separator />
+				<p:menuitem value="Quit" url="index.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Examen" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des Examens" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Materiel" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste du materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Salle" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des salles" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Session" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+			<p:submenu label="Module" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des modules" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+
+
+
+
+			<p:submenu label="Help" icon="ui-icon-help">
+				<p:menuitem value="Contents" url="#" />
+				<p:submenu label="Search" icon="ui-icon-search">
+					<p:submenu label="Text">
+						<p:menuitem value="Workspace" url="#" />
+					</p:submenu>
+					<p:menuitem value="File" url="#" />
+				</p:submenu>
+			</p:submenu>
+
+
+
+			<p:menuitem value="Quit" url="http://www.primefaces.org"
+				icon="ui-icon-close" />
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
+	
+	
+	
+<!-- ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo -->
+	<h:form>
+		<p:growl id="growl" />
+
+		<h3 style="margin-top: 0">Ajouter un matériel</h3>
+		<p:panel id="pnl" header="Nouveau matériel"
+			style="margin-bottom:10px; background-color: rgb(116, 208, 241)">
+			<p:messages id="messages" />
+			<h:panelGrid columns="3" cellpadding="5">
+				<h:outputLabel for="nomMateriel" value="Type de matériel: *" />
+				<p:inputText id="nomMateriel" value="#{materielBean.m.nomMateriel}"
+					required="true" label="Nom du Matériel">
+					<f:validateLength minimum="2" />
+				</p:inputText>
+				<p:message for="nomMateriel" />
+
+				<h:outputLabel for="etat" value="Etat du matériel: *" />
+				<p:inputText id="etat" value="#{materielBean.m.etat}"
+					required="true" label="Etat" />
+				<p:message for="etat" />
+			</h:panelGrid>
+
+			<p:commandButton id="saveBtn" value="Ajouter" icon="ui-icon-check"
+				style="margin:0" actionListener="#{materielBean.ajouterM()}"
+				update="growl" />
+		</p:panel>
+
+		<p:blockUI block="pnl" trigger="saveBtn" />
+
+
+
+		<h3>Liste matériel</h3>
+		<p:dataTable id="dataTable" var="ma" value="#{materielBean.getList()}"
+			paginator="true" rows="5">
+			<f:facet name="header">
+            Materiel
+        </f:facet>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText value="#{ma.idMateriel}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				<h:outputText value="#{ma.nomMateriel}" />
+			</p:column>
+
+
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Etat" />
+				</f:facet>
+				<h:outputText value="#{ma.etat}" />
+			</p:column>
+		</p:dataTable>
+
+		<p:blockUI block="dataTable" trigger="dataTable">
+        LOADING<br />
+			<p:graphicImage name="demo/images/ajaxloadingbar.gif" />
+		</p:blockUI>
+
+
+
+
+		<h3>Modifier/Supprimer</h3>
+		<p:accordionPanel>
+			<p:tab title="Supprimer un matériel">
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:form>
+					<h:outputText value="Id de l'étudiant"></h:outputText>
+					 <p:inputText value="#{materielBean.idMat}"></p:inputText>
+						<p:commandButton value="Supprimer"
+							actionListener="#{materielBean.supprimerM()}"
+							icon="ui-icon-check"></p:commandButton>
+
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+
+		</p:accordionPanel>
+
+		
+		<h:form>
+	<p:accordionPanel style="width:600px;">
+		<p:tab title="Modifier un matériel">
+			<table style="background-color: rgb(116, 208, 241)">
+				<tr>
+					<td><h:outputLabel for="idMat" value="Identifiant du module" style="font-weight:bold" /></td>
+					<td> <p:inputText id="idMat" value="#{materielBean.idMat}" required="true" requiredMessage="Il faut un identifiant"/></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="name" value="Nom/Type de matériel:" style="font-weight:bold" /></td>
+					<td><p:inputText id="name" value="#{materielBean.updtNomMateriel}"/></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="duree" value="Etat" style="font-weight:bold" /></td>
+					<td> <p:inputText id="duree" value="#{materielBean.updtEtatMateriel}"/></td>
+				</tr>
+			
+				<tr>
+					<td><p:commandButton value="Maj" update="display" icon="ui-icon-check" actionListener="#{materielBean.modifierM()}"/></td>
+					<td><h:outputText id="display" value=""/></td>
+				</tr>	
+			</table>
+		</p:tab>
+	</p:accordionPanel>
+</h:form> 
+
+		<p:accordionPanel style="width:600px;">
+	<p:tab title="Chercher un module par id">
+		<h:form>
+			<table>
+				<tr>
+					<td><h:outputLabel for="idMat" value="Identifiant du matériel" style="font-weight:bold" /></td>
+					<td> <p:inputText id="idMat" value="#{materielBean.idMat}" required="true" requiredMessage="Entrez un identifiant"/></td>
+				</tr>
+				<tr>
+					<td><p:commandButton value="Search" update="display" icon="ui-icon-check" actionListener="#{materielBean.getById()}"/></td>
+					<td><h:outputText id="display" value=""/></td>
+				</tr>	
+			</table>
+		</h:form>
+		<p:tab>
+		<h:panelGrid columns="3" cellpadding="10" border="1">
+		<h:outputText value="Identifiant"></h:outputText>
+		<h:outputText value="Nom Materiel"></h:outputText>
+		<h:outputText value="Etat Materiel"></h:outputText>
+		
+
+		
+		<h:outputText value="#{materielBean.getMat.idMateriel}"/>
+		<h:outputText value="#{materielBean.getMat.nomMateriel}"/>
+		<h:outputText value="#{materielBean.getMat.etat}"/>
+	
+		</h:panelGrid>
+		</p:tab> 
+	</p:tab>
+</p:accordionPanel>
+		
+		
+		
+		
+
+	</h:form>
+</h:body>
+</html>

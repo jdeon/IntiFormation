@@ -207,6 +207,8 @@
 		<p:blockUI block="accordion" widgetVar="bui" />
 		<br />
 		<br />
+		
+		
 		<p:accordionPanel>
 			<p:tab title="Supprimer un étudiant">
 				<h:panelGrid style="background-color: rgb(255,185,255)" columns="2"
@@ -221,100 +223,154 @@ Id de l'Etudiant : <p:inputText value="#{etudBean.id}"></p:inputText>
 			</p:tab>
 		</p:accordionPanel>
 
-<h:form id="form">
-			<p:growl id="msgs" showDetail="true" />
 
-			<h3 style="margin-top: 0">Recherche par mots clés</h3>
-			<p:accordionPanel>
-				<p:tab title="Recherche par id">
-					<h:panelGrid style="background-color: rgb(255,185,255)" columns="2" cellpadding="10">
-						<h:form>
-        Id de l'Etudiant : <p:inputText value="#{etudBean.id}"></p:inputText>
-							<p:commandButton value="Entrer un identifiant"
-								actionListener="#{etudBean.getById()}" icon="ui-icon-check"></p:commandButton>
-												<p:tab>
-							<h:outputText value="Identifiant"></h:outputText>
-							<h:outputText value="Nom"></h:outputText>
-							<h:outputText value="Prenom"></h:outputText>
-							<h:outputText value="Date de Naissance"></h:outputText>
-							<h:outputText value="Mail"></h:outputText>
-							<h:outputText value="Telephone"></h:outputText>
-							<h:outputText value="Specialite"></h:outputText>
 
-							<h:outputText value="#{etudBean.e.idEtudiant}" />
-							<h:outputText value="#{etudBean.e.nomEtu}" />
-							<h:outputText value="#{etudBean.e.prenomEtu}" />
-							<h:outputText value="#{etudBean.e.datedeNaissanceEtu}" />
-							<h:outputText value="#{etudBean.e.telephoneEtu}" />
-							<h:outputText value="#{etudBean.e.mail}" />
-							<h:outputText value="#{etudBean.e.specialitéEtu}" />
+	<p:accordionPanel>
+			<p:tab title="Recherche par id">
 
-						</p:tab>
-						</h:form>
+				<h:form>
+					<table>
+						<tr>
+							<td><h:outputLabel for="idEtudiant"
+									value="Identifiant de l'étudiant" style="font-weight:bold" /></td>
+							<td><p:inputText id="idEtudiant" value="#{etudBean.id}"
+									required="true"
+									requiredMessage="Veuillez entrer un identifiant" /></td>
+						</tr>
+						<tr>
+							<td><p:commandButton value="Envoyer" update="display"
+									icon="ui-icon-check" actionListener="#{etudBean.getById()}" /></td>
+							<td><h:outputText id="display" value="" /></td>
+						</tr>
+					</table>
+				</h:form>
+
+				<p:tab>
+					<h:panelGrid style="background-color: rgb(255,185,255)" columns="7"
+						cellpadding="10">
+
+						<h:outputText value="Identifiant"></h:outputText>
+						<h:outputText value="Nom"></h:outputText>
+						<h:outputText value="Prenom"></h:outputText>
+						<h:outputText value="Date de naissance"></h:outputText>
+						<h:outputText value="Mail"></h:outputText>
+						<h:outputText value="Telephone"></h:outputText>
+						<h:outputText value="Spécialité"></h:outputText>
+
+						
+						
+						<h:outputText value="#{etudBean.getEtud.idEtudiant}" />
+						<h:outputText value="#{etudBean.getEtud.nomEtu}" />
+						<h:outputText value="#{etudBean.getEtud.prenomEtu}" />
+						<h:outputText value="#{etudBean.getEtud.datedeNaissanceEtu}" />
+						<h:outputText value="#{etudBean.getEtud.mail}" />
+						<h:outputText value="#{etudBean.getEtud.telephoneEtu}" />
+						<h:outputText value="#{etudBean.getEtud.specialitéEtu}" />
+						
+
+					</h:panelGrid>
+				</p:tab>
+			</p:tab>
+		</p:accordionPanel>
 		
-
-
+		*******
+		<p:accordionPanel style="width:600px;">
+			<p:tab title="Rechercher module par mot cle">
+				<h:form>
+					<h:panelGrid columns="3" cellpadding="5">
+						<h:outputLabel for="menu" value="Location:" />
+						<p:selectCheckboxMenu id="menu" value="#{moduleBean.tabRech}"
+							label="Modules" filter="true" filterMatchMode="contains"
+							panelStyle="width:250px">
+							<f:selectItems value="#{moduleBean.listNomAllModule}" />
+						</p:selectCheckboxMenu>
+						<p:commandLink value="Submit" update="display" />
 					</h:panelGrid>
-				</p:tab>
-				<p:tab title="Recherche par Nom Exacte">
-					<h:panelGrid style="background-color: rgb(255,185,255)" columns="2" cellpadding="10">
-						
-											<h:form>
-    
-    Nom : <p:inputText value="#{etudBean.nomEtu}"></p:inputText>
-							<p:commandButton value="Trouver"
-								actionListener="#{etudBean.getListNomExacte()}"
-								icon="ui-icon-check">
-							</p:commandButton>
-							<p:dataTable style="background-color: rgb(134,48,134)" var="get"
-								value="#{etudBean.getListNomExacte()}">
-								<p:column headerText="Id">
-									<h:outputText value="#{get.idEtudiant}" />
-								</p:column>
 
-								<p:column headerText="Nom">
-									<h:outputText value="#{get.nomEtu}" />
-								</p:column>
+					<p:outputPanel id="display"
+						style="width:500px;padding-left:5px;margin-top:10px">
+						<p:dataTable id="listModule"
+							columnClasses="list-column-center,  list-column-right, list-column-center,list-column-right"
+							headerClass="list-header" rowClasses="list-row"
+							styleClass="list-background" value="#{moduleBean.tabRech}"
+							var="module" emptyMessage="Pas de module trouver">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Identifiant" />
+								</f:facet>
+								<h:outputText
+									value="#{metierModule.getExactName(module).idModule}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nom" />
+								</f:facet>
+								<h:outputText value="#{module}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Description" />
+								</f:facet>
+								<h:outputText
+									value="#{metierModule.getExactName(module).descriptionModule}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Duree" />
+								</f:facet>
+								<h:outputText
+									value="#{metierModule.getExactName(module).dureeModule}" />
+							</p:column>
+						</p:dataTable>
+					</p:outputPanel>
+				</h:form>
+			</p:tab>
+		</p:accordionPanel>
+*********************************
 
-								<p:column headerText="Prenom">
-									<h:outputText value="#{get.prenomEtu}" />
-								</p:column>
-
-								<p:column headerText="Date de Naissance">
-									<h:outputText value="#{get.datedeNaissanceEtu}" />
-								</p:column>
-
-
-								<p:column headerText="Mail">
-									<h:outputText value="#{get.mail}" />
-								</p:column>
-
-								<p:column headerText="Telephone">
-									<h:outputText value="#{get.telephoneEtu}" />
-								</p:column>
-
-
-								<p:column headerText="Specialité">
-									<h:outputText value="#{get.specialitéEtu}" />
-								</p:column>
-							</p:dataTable>
-
-
+		**********
 
 
-						</h:form>
-						
-						
-					</h:panelGrid>
-				</p:tab>
-				<p:tab title="Godfather Part III">
-					<h:panelGrid columns="2" cellpadding="10">
-						<p:graphicImage name="demo/images/godfather/godfather3.jpg" />
-						<h:outputText value="After a break of more than 15 years..." />
-					</h:panelGrid>
-				</p:tab>
-			</p:accordionPanel>
-		</h:form>
+		<p:accordionPanel>
+			<p:tab title="Ajouter un étudiant à un examen">
+				<h:panelGrid style="background-color: rgb(255,185,255)" columns="2"
+					cellpadding="10">
+					<h:form>
+Id de l'Etudiant : <p:inputText value="#{etudBean.id}"></p:inputText>
+Id de l'examen : <p:inputText  value="#{etudBean.idEx}"></p:inputText>
+<br/>
+						<p:commandButton value="Ajouter "
+							actionListener="#{etudBean.addExamToEtudiant()}" icon="ui-icon-check"></p:commandButton>
+					
+								<p:commandButton value="Supprimer "
+							actionListener="#{etudBean.supExamToEtudiant()}" icon="ui-icon-check"></p:commandButton>
+
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+		</p:accordionPanel>
+
+
+
+		<p:accordionPanel>
+			<p:tab title="Ajouter/Supprimer un matériel lié à un étudiant">
+				<h:panelGrid style="background-color: rgb(255,185,255)" columns="2"
+					cellpadding="10">
+					<h:form>
+Id de l'Etudiant : <p:inputText value="#{etudBean.id}"></p:inputText>
+Id du matériel : <p:inputText  value="#{etudBean.idM}"></p:inputText>
+<br/>
+						<p:commandButton value="Ajouter "
+							actionListener="#{etudBean.addMaterToEtudiant()}" icon="ui-icon-check"></p:commandButton>
+					
+								<p:commandButton value="Supprimer "
+							actionListener="#{etudBean.supMaterToEtudiant()}" icon="ui-icon-check"></p:commandButton>
+
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+		</p:accordionPanel>
+
 
 
 	</h:form>

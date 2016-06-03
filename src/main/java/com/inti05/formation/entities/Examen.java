@@ -42,7 +42,7 @@ public class Examen implements Serializable {
 ///////////////////////////////////////////
 
 	@ManyToOne
-	@JoinColumn(name = "id_Examen")
+	@JoinColumn(name = "id_Etudiant")
 	private Etudiant etudiant;
 
 	

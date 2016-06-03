@@ -53,7 +53,7 @@ public class Etudiant implements Serializable {
 	///////////////////////////////////////////
 	
 	@OneToMany
-	@JoinColumn(name = "id_materiel")
+	@JoinColumn(name = "id_etudiant")
 	
 	private List<Materiel> listmateriel = new ArrayList<Materiel>();
 

@@ -50,6 +50,8 @@ public class EtudiantBean implements Serializable{
 	private Etudiant getEtud ;
 	
 
+	
+
 	public String getNomEtu() {
 		return nomEtu;
 	}
@@ -193,13 +195,13 @@ public class EtudiantBean implements Serializable{
 	public List<Etudiant> getlistParMc(){
 		return metierEtudiant.getlistParMc(s);
 	}
-	public List<Etudiant> getListNomExacte(){
-	return metierEtudiant.getListNomExacte(s);
+	public  Etudiant getListNomExacte(String nom,String prenom){
+	return metierEtudiant.getListNomExacte(nomEtu, prenomEtu);
 		
 	}
 	public Etudiant getById(){
-		e = metierEtudiant.getById(id);
-		return e;
+		getEtud = metierEtudiant.getById(id);
+		return getEtud;
 
 	}
 	public Etudiant addExamToEtudiant(){
@@ -208,10 +210,10 @@ public class EtudiantBean implements Serializable{
 	public Etudiant supExamToEtudiant (){
 		return metierEtudiant.supExamToEtudiant(idEx, id);
 	}
-	public Etudiant addMaterToEtudiant (){
+	public Etudiant addMaterToEtudiant(){
 		return metierEtudiant.addMaterToEtudiant(idM, id);
 	}
-	public Etudiant supMaterToEtudiant ( ){
+	public Etudiant supMaterToEtudiant(){
 		return metierEtudiant.supMaterToEtudiant(idM, id);
 	}
 	  public String onFlowProcess(FlowEvent event) {

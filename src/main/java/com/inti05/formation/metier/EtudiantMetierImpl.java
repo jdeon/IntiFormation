@@ -53,9 +53,9 @@ public class EtudiantMetierImpl implements InterEtudiantMetier {
 	}
 
 	@Override
-	public List<Etudiant> getListNomExacte(String nom) {
+	public  Etudiant getListNomExacte(String nom,String prenom) {
 		// TODO Auto-generated method stub
-		return daoEt.getListNomExacte(nom);
+		return daoEt.getListNomExacte(nom, prenom);
 	}
 
 	@Override
@@ -86,6 +86,12 @@ public class EtudiantMetierImpl implements InterEtudiantMetier {
 	public Etudiant supMaterToEtudiant(Long idMateriel, Long idEtudiant) {
 		// TODO Auto-generated method stub
 		return daoEt.supMaterToEtudiant(idMateriel, idEtudiant);
+	}
+	
+	@Override
+	public List<Etudiant> listEtudiantSansFormation() {
+		// TODO Auto-generated method stub
+		return daoEt.listEtudiantSansFormation();
 	}
 
 }

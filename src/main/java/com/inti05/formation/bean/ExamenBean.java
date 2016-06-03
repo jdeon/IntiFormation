@@ -2,6 +2,7 @@ package com.inti05.formation.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -25,6 +26,44 @@ public class ExamenBean implements Serializable {
 	private Examen ex = new Examen();
 	private List<Examen> listeex = new ArrayList<Examen>();
 	private Long id;
+	private Date dateEx;
+	private Double noteEx;
+	private String nomEx;
+	private Long idExam;
+
+
+
+	public Date getDateEx() {
+		return dateEx;
+	}
+
+	public void setDateEx(Date dateEx) {
+		this.dateEx = dateEx;
+	}
+
+	public Double getNoteEx() {
+		return noteEx;
+	}
+
+	public void setNoteEx(Double noteEx) {
+		this.noteEx = noteEx;
+	}
+
+	public String getNomEx() {
+		return nomEx;
+	}
+
+	public void setNomEx(String nomEx) {
+		this.nomEx = nomEx;
+	}
+
+	public Long getIdExam() {
+		return idExam;
+	}
+
+	public void setIdExam(Long idExam) {
+		this.idExam = idExam;
+	}
 
 	public InterExamMetier getMetierExamen() {
 		return metierExamen;
@@ -66,8 +105,9 @@ public class ExamenBean implements Serializable {
 	/*********************** Méthodes **********************/
 
 	public Examen addEx() {
-		metierExamen.addExamen(ex);
-		return ex;
+		Examen exam = new Examen(nomEx, dateEx, noteEx);
+		metierExamen.addExamen(exam);
+		return exam;
 	}
 
 	public List<Examen> listeExamen() {

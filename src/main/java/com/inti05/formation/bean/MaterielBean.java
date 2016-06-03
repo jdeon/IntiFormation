@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -15,16 +16,63 @@ import com.inti05.formation.entities.Materiel;
 import com.inti05.formation.metier.InterMaterielMetier;
 
 @Controller
-@Component("materielBean")
+@ManagedBean(name="materielBean")
 @RequestScoped
 public class MaterielBean implements Serializable {
+
+	Logger log = Logger.getLogger("MaterielBean");
 
 	@Autowired
 	private InterMaterielMetier metierMateriel;
 
 	private Materiel m = new Materiel();
 	private List<Materiel> listm = new ArrayList<Materiel>();
-	private Long id;
+	private Long idMat;
+	private String updtNomMateriel;
+	private String updtEtatMateriel;
+	private String nomMateriel;
+	private String etat;
+	private Materiel getMat;
+
+	public Materiel getGetMat() {
+		return getMat;
+	}
+
+	public void setGetMat(Materiel getMat) {
+		this.getMat = getMat;
+	}
+
+	public String getNomMateriel() {
+		return nomMateriel;
+	}
+
+	public void setNomMateriel(String nomMateriel) {
+		this.nomMateriel = nomMateriel;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
+
+	public String getUpdtNomMateriel() {
+		return updtNomMateriel;
+	}
+
+	public void setUpdtNomMateriel(String updtNomMateriel) {
+		this.updtNomMateriel = updtNomMateriel;
+	}
+
+	public String getUpdtEtatMateriel() {
+		return updtEtatMateriel;
+	}
+
+	public void setUpdtEtatMateriel(String updtEtatMateriel) {
+		this.updtEtatMateriel = updtEtatMateriel;
+	}
 
 	public InterMaterielMetier getMetierMateriel() {
 		return metierMateriel;
@@ -50,12 +98,12 @@ public class MaterielBean implements Serializable {
 		this.listm = listm;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdMat() {
+		return idMat;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdMat(Long idMat) {
+		this.idMat = idMat;
 	}
 
 	public MaterielBean() {
@@ -71,13 +119,24 @@ public class MaterielBean implements Serializable {
 
 	}
 
-	public Materiel supprimerM() {
-		return metierMateriel.supM(id);
+	public void supprimerM() {
+		metierMateriel.supM(idMat);
 
 	}
 
 	public Materiel modifierM() {
-		return metierMateriel.modM(m);
+		Materiel m1 = metierMateriel.getById(idMat);
+		if (updtEtatMateriel.length() > 0) {
+			m1.setEtat(etat);
+		}
+		if (updtNomMateriel.length() > 0) {
+			m1.setNomMateriel(nomMateriel);
+		}
+
+		metierMateriel.modM(m1);
+
+		log.info("le materiel" + m1.getNomMateriel() + "a bien été supprimer");
+		return m1;
 
 	}
 
@@ -86,8 +145,8 @@ public class MaterielBean implements Serializable {
 
 	}
 
-	public Materiel getById() {
-		return metierMateriel.getById(id);
+	public void getById() {
+		getMat =  metierMateriel.getById(idMat);
 
 	}
 

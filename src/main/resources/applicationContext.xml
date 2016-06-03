@@ -42,10 +42,12 @@
 		</beans:bean>
 	
 	 <!-- Premiere methode pour faire l injection dependence -->	
-	 <context:component-scan base-package="com.inti05.formation"/>
+	
+
+<!-- 	 <context:component-scan base-package="com.inti05.formation"/>
 	 <context:component-scan base-package="com.inti05.formation.entities"/>
 	<context:component-scan base-package="com.inti05.formation.dao"/>
-	<context:component-scan base-package="com.inti05.formation.metier"/>
+	<context:component-scan base-package="com.inti05.formation.metier"/> -->
 
    
 	<!-- ************************************************************************************************ -->
@@ -80,6 +82,8 @@
     <context:annotation-config></context:annotation-config>
 	<!-- ************************************************************************************************ -->
 	<context:component-scan base-package="com.inti05.formation" />
+	
+	<context:component-scan base-package="com.inti05.formation.bean" />
 	<!-- ************************************************************************************************ -->
 	
 	<!-- ************************************************************************************************ -->

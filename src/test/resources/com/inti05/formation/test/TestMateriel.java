@@ -31,27 +31,27 @@ public class TestMateriel {
 	public void testAddM() {
 		Materiel m =metier.addM(new Materiel("ordinateur", "fonctionne"));
 		Materiel m1 = metier.addM(new Materiel("Souris", "BOn état"));
-	}*/
+	}
 
-	/*@Test
+	@Test
 	public void testSupM() {
-		Long id=1L;
+		Long id=4L;
 		Materiel m =metier.supM(id);
 		assertEquals(id, m.getIdMateriel());
 	}*/
 
-	/*@Test
+	@Test
 	public void testModM() {
-		Materiel m = metier.getById(2L);
+		Materiel m = metier.getById(6L);
 		m.setEtat("mal");
 		metier.modM(m);
 		assertTrue(m.getEtat()=="mal");
-	}*/
-
-@Test
+	}
+/*
+	@Test
 	public void testGetById() {
 		Long id = 2L;
 		Materiel m = metier.getById(id);
 		assertEquals(id, m.getIdMateriel());
-	}
+	}*/
 }

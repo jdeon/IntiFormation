@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hello this is a new application from JD and SHE</title>
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:submenu label="Etudiant" icon="ui-icon-document">
+				<p:submenu label="Ajouter Etudiant" icon="ui-icon-contact">
+					<p:menuitem value="Ajouter" url="etudiant.xhtml" />
+				</p:submenu>
+				<p:menuitem value="Modifier" url="etudiant.xhtml" />
+				<p:separator />
+				<p:menuitem value="Supprimer" url="etudiant.xhtml" />
+				<p:separator />
+				<p:menuitem value="Liste des étudiants" url="etudiant.xhtml" />
+				<p:separator />
+				<p:menuitem value="Quit" url="index.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Examen" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un examen" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des Examens" url="examen.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Materiel" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste du materiel" url="materiel.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Salle" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier une salle" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des salles" url="Salle.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+			<p:submenu label="Session" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier une session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des session" url="Session.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+			<p:submenu label="Module" icon="ui-icon-pencil">
+				<p:menuitem value="Ajouter un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-w" />
+				<p:menuitem value="Supprimer un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Modifier un module" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+				<p:menuitem value="Liste des modules" url="Module.xhtml"
+					icon="ui-icon-arrowreturnthick-1-e" />
+
+			</p:submenu>
+
+
+
+
+
+			<p:submenu label="Help" icon="ui-icon-help">
+				<p:menuitem value="Contents" url="#" />
+				<p:submenu label="Search" icon="ui-icon-search">
+					<p:submenu label="Text">
+						<p:menuitem value="Workspace" url="#" />
+					</p:submenu>
+					<p:menuitem value="File" url="#" />
+				</p:submenu>
+			</p:submenu>
+
+
+
+			<p:menuitem value="Quit" url="http://www.primefaces.org"
+				icon="ui-icon-close" />
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+
+	<p:growl id="growl" />
+
+	<h3 style="margin-top: 0">Ajouter un examen</h3>
+	<p:panel id="pnl" header="Nouvel examen"
+		style="margin-bottom:10px; background-color: rgb(116, 208, 241)">
+		<p:messages id="messages" />
+		<h:panelGrid columns="3" cellpadding="5">
+
+			<h:outputLabel for="nomExamen" value="Nom Examen: *" />
+			<p:inputText id="nomExamen" value="#{examBean.nomEx}"
+				required="true" label="Nom Examen">
+				<f:validateLength minimum="2" />
+			</p:inputText>
+			<p:message for="nomExamen" />
+
+			<h:outputLabel for="dateExamen" value="Date Examen: *" />
+			<p:calendar id="dateExamen" value="#{examBean.dateEx}"
+				required="true" label="Date Examen" />
+			<p:message for="dateExamen" />
+
+			<h:outputLabel for="noteExamen" value="Note de l'examen: *" />
+			<p:inputText id="noteExamen" value="#{examBean.noteEx}"
+				required="true" label="Note de l'examen" />
+			<p:message for="noteExamen" />
+
+		</h:panelGrid>
+
+		<p:commandButton id="saveBtn" value="Ajouter" icon="ui-icon-check"
+			style="margin:0" actionListener="#{examBean.addEx()}"
+			update="growl" />
+	</p:panel>
+
+	<p:blockUI block="pnl" trigger="saveBtn" />
+	
+
+	    
+	    	<h3>Liste Examen</h3>
+		<p:dataTable id="dataTable" var="ex" value="#{examBean.listeExamen()}"
+			paginator="true" rows="5">
+			<f:facet name="header">
+            Materiel
+        </f:facet>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText value="#{ex.idExamen}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nom" />
+				</f:facet>
+				<h:outputText value="#{ex.nomExamen}" />
+			</p:column>
+
+
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Date" />
+				</f:facet>
+				<h:outputText value="#{ex.dateExamen}" />
+			</p:column>
+			
+						<p:column>
+				<f:facet name="header">
+					<h:outputText value="Note" />
+				</f:facet>
+				<h:outputText value="#{ex.noteExamen}" />
+			</p:column>
+		</p:dataTable>
+
+		<p:blockUI block="dataTable" trigger="dataTable">
+        LOADING<br />
+			<p:graphicImage name="demo/images/ajaxloadingbar.gif" />
+		</p:blockUI>
+
+	    
+   
+
+
+    
+    
+
+</h:body>
+</html>
